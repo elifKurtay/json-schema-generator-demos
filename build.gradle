@@ -59,6 +59,11 @@ micronaut {
         optimizeNetty = true
         replaceLogbackXml = true
     }
+    jsonschema {
+        fromUrl("https://json.schemastore.org/openweather.current.json") {
+            outputPackageName.set("com.example.openweather")
+        }
+    }
 }
 
 
