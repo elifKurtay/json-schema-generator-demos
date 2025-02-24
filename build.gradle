@@ -59,6 +59,15 @@ micronaut {
         optimizeNetty = true
         replaceLogbackXml = true
     }
+    jsonschema {
+        fromFile(file("src/main/resources/animal.schema.json")) {
+            lang.set("java")
+            outputPackageName.set("com.example.animal")
+        }
+        fromUrl("https://www.hl7.org/fhir/fhir.schema.json") {
+            outputPackageName.set("com.example.fhir")
+        }
+    }
 }
 
 
