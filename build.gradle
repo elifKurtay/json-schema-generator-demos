@@ -61,8 +61,12 @@ micronaut {
     }
     jsonschema {
         fromUrl("https://json.schemastore.org/openweather.current.json") {
+            lang.set("java")
             outputPackageName.set("com.example.openweather")
         }
+//        fromFile(file("src/main/resources/openweather.current.json")) {
+//            outputPackageName.set("com.local.openweather")
+//        }
     }
 }
 
