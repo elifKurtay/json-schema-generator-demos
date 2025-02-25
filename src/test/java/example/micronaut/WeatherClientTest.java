@@ -29,5 +29,7 @@ public class WeatherClientTest {
     void testClient() {
         var response = client.getCurrent("44.34", "10.99");
         Assertions.assertNotNull(response);
+        Assertions.assertTrue(response.main().temp() > 0);
+        Assertions.assertEquals(44.34000015258789, response.coord().lat());
     }
 }

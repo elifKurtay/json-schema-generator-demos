@@ -20,9 +20,9 @@ import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.PathVariable;
 import io.micronaut.http.client.annotation.Client;
 
-@Client(value = "https://api.openweathermap.org/data/2.5/weather?")
+@Client(value = "https://api.openweathermap.org/data/2.5")
 public interface OpenWeatherClient {
 
-    @Get("lat={lat}&lon={lon}&appid=51c7319500eab4570b1ad343e9a9ded4")
+    @Get("/weather?lat={lat}&lon={lon}&appid=${micronaut.application.openweather.apikey}")
     OpenweatherCurrentWeatherDataApi getCurrent(@PathVariable String lat, @PathVariable String lon);
 }
