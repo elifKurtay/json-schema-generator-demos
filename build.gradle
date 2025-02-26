@@ -23,6 +23,7 @@ dependencies {
     implementation("io.micronaut.sourcegen:micronaut-sourcegen-annotations")
     implementation("io.micronaut.validation:micronaut-validation")
     implementation("jakarta.validation:jakarta.validation-api")
+    implementation("io.micronaut:micronaut-jackson-databind")
     compileOnly("io.micronaut:micronaut-http-client")
     runtimeOnly("ch.qos.logback:logback-classic")
     testImplementation("io.micronaut:micronaut-http-client")
@@ -61,7 +62,6 @@ micronaut {
     }
     jsonschema {
         fromFile(file("src/main/resources/animal.schema.json")) {
-            lang.set("java")
             outputPackageName.set("com.example.animal")
         }
         fromUrl("https://www.hl7.org/fhir/fhir.schema.json") {
