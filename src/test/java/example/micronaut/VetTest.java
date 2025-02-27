@@ -27,4 +27,20 @@ class VetTest {
         Assertions.assertNotNull(response);
         Assertions.assertEquals(AnimalTypes.CAT, response);
     }
+
+    @Test
+    void testDog() {
+        String inputData = """
+            {
+              "resourceType": "Dog",
+              "id": "1x",
+              "birthdate": "2000-01-01",
+              "name": "Micronaut",
+              "hasMate": true
+            }
+            """.replaceAll("\\s", "");
+        var response = client.getAnimalType(inputData);
+        Assertions.assertNotNull(response);
+        Assertions.assertEquals(AnimalTypes.DOG, response);
+    }
 }

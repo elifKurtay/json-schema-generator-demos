@@ -16,11 +16,9 @@
 package example.micronaut;
 
 import com.example.animal.Animal;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import io.micronaut.core.async.annotation.SingleResult;
 import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
-import com.fasterxml.jackson.databind.json.JsonMapper;
 import io.micronaut.http.annotation.Post;
 
 @Controller("/test")
@@ -28,9 +26,7 @@ public class VetController {
 
     @Post("/type")
     @SingleResult
-    AnimalTypes getAnimalType(@Body String animalJson) throws JsonProcessingException {
-        JsonMapper jsonMapper = new JsonMapper();
-        var animal = jsonMapper.readValue(animalJson, Animal.class);
-        return AnimalTypes.of(animal.getClass().getName().substring(animal.getClass().getName().lastIndexOf('.') + 1));
+    AnimalTypes getAnimalType(@Body Animal animal) {
+        return AnimalTypes.of(animal.getClass().getSimpleName());
     }
 }
